@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Downloader</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: linear-gradient(135deg, #1e90ff, #87ceeb);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #1e90ff;
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .header p {
+            color: #333;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .url-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #1e90ff;
+            border-radius: 30px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .url-input:focus {
+            border-color: #87ceeb;
+        }
+
+        .download-btn {
+            background-color: #1e90ff;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #4682b4;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .instructions {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>YouTube Downloader</h1>
+            <p>Download your favorite YouTube videos</p>
+        </div>
+        <form method="post" action="{% url 'download_video' %}">
+            {% csrf_token %}
+            <input type="text" name="url" class="url-input" placeholder="Paste YouTube video URL here">
+            <button type="submit" class="download-btn">Download</button>
+        </form>
+        <div class="instructions">
+            <p>Please enter a valid YouTube URL to download the video.</p>
+        </div>
+        <div class="footer">
+            <p>YouTube Downloader: Fast and Easy Way to Save YouTube Videos</p>
+        </div>
+    </div>
+
+</body>
+</html>
+
